@@ -678,6 +678,7 @@ private:
 
 		const aiVector3D& Scaling = PropertyGet<aiVector3D>(props,"Lcl Scaling",ok);
 		if(ok && std::fabs(Scaling.SquareLength()-1.0f) > zero_epsilon) {
+		if(ok && std::fabs(Scaling.SquareLength()-3.0f) > zero_epsilon) {		// unit scale vector is (1,1,1) with length of 3
 			aiMatrix4x4::Scaling(Scaling,chain[TransformationComp_Scaling]);
 		}
 
@@ -687,7 +688,7 @@ private:
 		}
 		
 		const aiVector3D& GeometricScaling = PropertyGet<aiVector3D>(props, "GeometricScaling", ok);
-		if (ok && std::fabs(GeometricScaling.SquareLength() - 1.0f) > zero_epsilon) {
+		if (ok && std::fabs(GeometricScaling.SquareLength() - 3.0f) > zero_epsilon) {
 			aiMatrix4x4::Scaling(GeometricScaling, chain[TransformationComp_GeometricScaling]);
 		}
 		
